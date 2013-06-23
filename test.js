@@ -13,15 +13,16 @@ server.configure(function() {
 	server.set('title', 'Dotpath Test');
 });
 
-//Template to be parsed:
+//Set up our dotpath and object the dotpath walks:
 var find = waxoDotpath('part.key.attribute');
-
 var body = find({part: {key: {attribute: "woop woop", another: "see here"} }})
 
+//And now check to make sure our returned valued equals our expected value
 assert.equal(body,
 	"woop woop",
 	"Dotpath failed to walk the dotpath from the given object!");
-	
+
+//Just to be sure, the returned value should either exist or be undefined
 var not_body = find({}) || find() || find(null);
 	
 assert.equal(not_body,
