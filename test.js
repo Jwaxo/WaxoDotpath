@@ -16,11 +16,11 @@ server.configure(function() {
 //Template to be parsed:
 var find = waxoDotpath('part.key.attribute');
 
-var body = find({part: {key: {attribute: "woop woop"} }})
+var body = find({part: {key: {attribute: "woop woop", another: "see here"} }})
 
 assert.equal(body,
 	"woop woop",
-	"Dotpath failed to walk the object!");
+	"Dotpath failed to walk the dotpath from the given object!");
 	
 var not_body = find({}) || find() || find(null);
 	
